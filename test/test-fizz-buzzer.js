@@ -45,6 +45,16 @@ describe('fizzbuzzer', function(){
   });
 
 
-  it('should return fizz if divisible by 3');
+  it('should return fizz if divisible by 3', function() {
+    const normalCases = [
+      {num: 3, expected: 'fizz'},
+      {num: 9, expected: 'fizz'},
+      {num: 12, expected: 'fizz'}
+    ];
+    normalCases.forEach(input => {
+      const answer = fizzBuzzer(input.num);
+      answer.should.equal(input.expected);
+    });
+  });
 
 });
