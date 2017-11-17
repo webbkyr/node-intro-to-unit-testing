@@ -7,12 +7,12 @@ const fizzBuzzer = require('../fizzBuzzer')
 describe('fizzbuzzer', function(){
   
   it('should throw an error for NaN', function(){
-    const normalCases = [
+    const badInput = [
       {num:'2'},
       {num: 'function'},
       {num: true}
     ];
-    normalCases.forEach(input => { 
+    badInput.forEach(input => { 
       (function() {
         fizzBuzzer(input.num);
       }).should.throw(Error);
@@ -56,5 +56,15 @@ describe('fizzbuzzer', function(){
       answer.should.equal(input.expected);
     });
   });
-
+  it('should log the num if not divisble by 15, 5, or 3', function() {
+    const normalCases = [
+      {num: 1, expected: 1},
+      {num: 14, expected: 14},
+      {num: 29, expected: 29}
+    ];
+    normalCases.forEach(input => {
+      const answer = fizzBuzzer(input.num);
+      answer.should.equal(input.expected);
+    });
+  });
 });
